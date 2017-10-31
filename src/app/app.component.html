@@ -1,0 +1,35 @@
+<div>
+  Dropdown is displaced downward
+  <br>
+  <button (click)="toggleCheck = !toggleCheck">Toggle Checkboxes: {{toggleCheck}}</button>
+  <br>
+  <br>
+  <button (click)="toggleGet = !toggleGet">Toggle Getter: {{toggleGet}}</button>
+  <br>
+
+  <br>
+  <div *ngIf="toggleCheck" fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="80" fxLayout="column">
+
+      <ng-container *ngIf="toggleGet">
+        <ng-container *ngFor="let item of checks">
+          <mat-checkbox>{{item.description}}</mat-checkbox>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="!toggleGet">
+        <ng-container *ngFor="let item of checks2">
+          <mat-checkbox>{{item.description}}</mat-checkbox>
+        </ng-container>
+      </ng-container>
+
+    </div>
+  </div>
+  <mat-form-field>
+    <mat-select placeholder="Options">
+      <mat-option *ngFor="let item of options" [value]="item.key">
+        {{ item.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

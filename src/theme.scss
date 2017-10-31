@@ -1,0 +1,64 @@
+@import '~@angular/material/theming';
+@import './palette';
+// Plus imports for other components in your app.
+  
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+$primary: mat-palette($mat-regent-green, 500);
+$accent:  mat-palette($mat-regent-green, 500, A100, A400); // We changed this as a temporary fix to make the steppers green
+// $accent:  mat-palette($mat-regent-blue, 500, A100, A400);
+// $accent:  mat-palette($mat-regent-tan, 800, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$warn:    mat-palette($mat-regent-red, 600);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+
+
+@function mat-typography-config(
+    $font-family:   'Open Sans, "Helvetica Neue", sans-serif',
+    $display-4:     mat-typography-level(112px, 112px, 300),
+    $display-3:     mat-typography-level(56px, 56px, 400),
+    $display-2:     mat-typography-level(45px, 48px, 400),
+    $display-1:     mat-typography-level(34px, 40px, 400),
+    $headline:      mat-typography-level(24px, 32px, 400),
+    $title:         mat-typography-level(20px, 32px, 500),
+    $subheading-2:  mat-typography-level(16px, 28px, 400),
+    $subheading-1:  mat-typography-level(15px, 24px, 400),
+    $body-2:        mat-typography-level(14px, 24px, 500),
+    $body-1:        mat-typography-level(14px, 20px, 400),
+    $caption:       mat-typography-level(12px, 20px, 400),
+    $button:        mat-typography-level(14px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+    $input:         mat-typography-level(inherit, 1.125, 400)
+  ) {
+    @return (
+      font-family:    $font-family,
+      display-4:      $display-4,
+      display-3:      $display-3,
+      display-2:      $display-2,
+      display-1:      $display-1,
+      headline:       $headline,
+      title:          $title,
+      subheading-2:   $subheading-2,
+      subheading-1:   $subheading-1,
+      body-2:         $body-2,
+      body-1:         $body-1,
+      caption:        $caption,
+      button:         $button,
+      input:          $input,
+    );
+  }
+
+
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+
+@include angular-material-typography();
